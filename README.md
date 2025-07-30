@@ -98,3 +98,5 @@ JWT_SECRET=dev-secret
 ## 🧠 Designed for Dyad
 
 This template works out-of-the-box with Dyad's AI Assist + Component Edit. It's structured for traceability, testability, and AI-guided workflows.
+
+By HYE Partners
