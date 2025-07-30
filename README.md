@@ -111,3 +111,8 @@ make test-all     # Run Go tests + (optional) React tests
 ## 💬 Contact
 
 Questions? Ideas? Reach out via the Dyad Hub discussion board or fork this repo and open a PR. Created by HYE Partners.
+
+
+## License
+
+MIT
