@@ -1,102 +1,113 @@
-# Go Template for Dyad
+# Dyad Monorepo: Go Backend + React Frontend
 
-A production-ready Go template with Google Cloud integration, optimized for Dyad AI workflows and modular backend services.
-
----
-
-## 🔧 Features
-
-- ✅ Google Cloud Datastore integration
-- ✅ OAuth2 + JWT authentication ready
-- ✅ CORS + structured logging middleware
-- ✅ Config from `.env` or `config.yaml`
-- ✅ Dockerfile + Cloud Run ready
-- ✅ Health check endpoint for GCP
-- ✅ Makefile with build/test/deploy tasks
+This monorepo contains both the Go backend and React frontend templates configured for Dyad-based development and deployment.
 
 ---
 
-## 📂 Project Structure
+## 📦 Structure
 
 ```
 
-.
-├── cmd/app/                 # Main server entrypoint
-├── config/                  # Loads YAML or env config
-├── internal/
-│   ├── handler/             # HTTP handlers
-│   └── middleware/          # Logging + CORS
-├── Dockerfile
-├── cloudrun.yaml
-├── .env.sample
-├── go.mod / go.sum
+dyad-monorepo/
+├── go-template/         # Go REST API service (Cloud Run ready)
+├── react-template/      # React + Tailwind frontend (Vite, shadcn/ui)
+├── ai\_rules.md          # Shared Dyad instruction set
+├── dyad.config.json     # Multi-app routing for Dyad (when supported)
 
 ````
 
 ---
 
-## 🚀 Getting Started
+## ⚙️ Backend (Go)
 
-### Install
+Located in `backend/`
+
+### 🔹 Run Locally
 
 ```bash
+cd backend
 go mod tidy
+go run ./cmd/app
 ````
 
-### Run Locally
-
-```bash
-go run ./cmd/app
-```
-
-### Test
+### 🔹 Test
 
 ```bash
 go test ./...
 ```
 
----
-
-## 🐳 Docker
+### 🔹 Docker
 
 ```bash
-docker build -t go-template .
-docker run -p 8080:8080 go-template
+make docker-build
+make docker-run
 ```
 
----
-
-## ☁️ Deploy to Google Cloud Run
+### 🔹 Deploy to Cloud Run
 
 ```bash
 make deploy
 ```
 
-Or manually:
+---
+
+## 🎨 Frontend (React)
+
+Located in `frontend/`
+
+### 🔹 Run Locally
 
 ```bash
-gcloud run deploy go-template \
-  --source=. \
-  --region=us-west1 \
-  --platform=managed \
-  --allow-unauthenticated
+cd frontend
+npm install
+npm run dev
 ```
 
 ---
 
-## 📄 Sample `.env`
+## 🧠 Dyad Compatibility
 
-```env
-GO_ENV=production
-PORT=8080
-PROJECT_ID=my-gcp-project
-JWT_SECRET=dev-secret
+This monorepo is designed to support Dyad’s AI tooling across both frontend and backend apps.
+
+* Dyad currently assumes the root contains a `package.json` or `go.mod`
+* **To work with the frontend**, open Dyad from the `react-template/` folder:
+
+```bash
+dyad react-template/
+```
+
+* The included `dyad.config.json` is a **hint file** for future Dyad support of multi-service monorepos.
+
+---
+
+## 🔐 Environment Variables
+
+Sample `.env` is provided for both apps in their respective directories.
+
+* Go config supports both `.env` and `config.yaml`
+* React config uses standard `VITE_`-prefixed env vars
+
+---
+
+## 🛠 Make Targets
+
+Top-level Makefile (optional) can be added to support:
+
+```bash
+make run-dev      # Start both apps locally
+make test-all     # Run Go tests + (optional) React tests
 ```
 
 ---
 
-## 🧠 Designed for Dyad
+## 🧪 Contributing
 
-This template works out-of-the-box with Dyad's AI Assist + Component Edit. It's structured for traceability, testability, and AI-guided workflows.
+1. Keep all new apps in their own subfolders
+2. Use consistent naming: `backend/`, `frontend/`, etc.
+3. Update `ai_rules.md` when tech stack or conventions evolve
 
-By HYE Partners
+---
+
+## 💬 Contact
+
+Questions? Ideas? Reach out via the Dyad Hub discussion board or fork this repo and open a PR. Created by HYE Partners.

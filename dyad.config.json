@@ -1,0 +1,16 @@
+{
+  "apps": [
+    {
+      "name": "frontend",
+      "path": "frontend",
+      "type": "node",
+      "start": "npm run dev"
+    },
+    {
+      "name": "backend",
+      "path": "backend",
+      "type": "go",
+      "start": "go run ./cmd/app"
+    }
+  ]
+}
