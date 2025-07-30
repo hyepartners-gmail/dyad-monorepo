@@ -1,0 +1,22 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: go-template
+spec:
+  template:
+    spec:
+      containers:
+        - image: gcr.io/YOUR_PROJECT_ID/go-template
+          env:
+            - name: GO_ENV
+              value: "production"
+            - name: PORT
+              value: "8080"
+            - name: JWT_SECRET
+              value: "use-secret-manager-or-override-this"
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "1000m"

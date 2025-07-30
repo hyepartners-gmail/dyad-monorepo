@@ -1,0 +1,13 @@
+# Binaries
+/go-template
+*.exe
+
+# Build output
+*.test
+
+# Vendor dependencies
+vendor/
+
+# IDE files
+.vscode/
+.idea/
